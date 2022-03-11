@@ -1,0 +1,28 @@
+<form class="ui large form segment">
+  <h3 class="ui header">Add a Link</h3>
+
+  <div>
+    <label for="title">Title:</label>
+    <input name="title" id="title" #newtitle> <!-- assign this tag to a local variable -->
+  </div>
+  <div class="field">
+    <label for="link">Link:</label>
+    <input name="link" id="link" #newlink>
+    <!-- newlink is an attribute, this markup
+    tells Angular to bind this input to the variable newlink;
+    newlink is now an object that represents this DOM element -->
+  </div>
+
+  <button (click)="addArticle(newtitle, newlink)" class="ui positive right floated button">
+    Submit link
+  </button>
+  <!-- we added to button a new attribute (click), when the click event happens we call addArticle
+  with the two arguments (newtitle and newlink); the markup (ui pos...) comes from Semantic UI -
+  becomes a green button -->
+</form>
+
+<div class="ui grid posts">
+  <app-article *ngFor="let foobar of sortedArticles()" [article]="foobar">
+    <!-- using article many times, clearer to rename the temporary variable to foobar -->
+  </app-article>
+</div>
